@@ -22,13 +22,7 @@ class User {
   password: string;
 
   @Column()
-  is_admin: boolean;
-
-  @Column("simple-array")
-  permissions: string[];
-
-  @Column("simple-array")
-  roles: string[];
+  type: string;
 
   @CreateDateColumn()
   created_at: Date;
