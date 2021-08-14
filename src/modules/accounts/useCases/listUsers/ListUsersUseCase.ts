@@ -2,16 +2,18 @@ import { inject, injectable } from "tsyringe";
 
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 
-type IAllUsers = {
+type User = {
   id: string;
   name: string;
   email: string;
-  is_admin: boolean;
-  permissions: string[];
-  roles: string[];
+  type: string;
   created_at: Date;
   updated_at: Date;
 };
+
+interface IResponse {
+  users: User[];
+}
 
 @injectable()
 class ListUsersUseCase {
@@ -20,23 +22,22 @@ class ListUsersUseCase {
     private usersRepository: IUsersRepository
   ) {}
 
-  async execute(): Promise<IAllUsers[]> {
+  async execute(): Promise<IResponse> {
     const users = await this.usersRepository.list();
 
-    const allUsersFormatted: IAllUsers[] = users.map((user) => {
-      const userFormatted = {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        is_admin: user.is_admin,
-        permissions: user.permissions,
-        roles: user.roles,
-        created_at: user.created_at,
-        updated_at: user.updated_at,
-      };
-
-      return userFormatted;
-    });
+    const allUsersFormatted: IResponse = {
+      users: users.map((user) => {
+        const userFormatted = {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          type: user.type,
+          created_at: user.created_at,
+          updated_at: user.updated_at,
+        };
+        return userFormatted;
+      }),
+    };
 
     return allUsersFormatted;
   }

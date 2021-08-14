@@ -3,20 +3,20 @@ version: "3.9"
 services:
   database:
     image: postgres
-    container_name: database_engeman
+    container_name: database_easyjob
     restart: "always"
     ports: 
     - 5432:5432
     environment:
-      - POSTGRES_USER=engeman
-      - POSTGRES_PASSWORD=engemandb
-      - POSTGRES_DB=engemanapi
+      - POSTGRES_USER=easyjob
+      - POSTGRES_PASSWORD=easyjobdb
+      - POSTGRES_DB=easyjobapi
     volumes:
       - pgdata:/data/postgres
 
   app:
     build: .
-    container_name: engemanapi
+    container_name: easyjobapi
     restart: "always"
     ports:
       - 3333:3333

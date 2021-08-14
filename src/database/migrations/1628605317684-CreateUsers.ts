@@ -24,21 +24,8 @@ export class CreateUsers1628605317684 implements MigrationInterface {
             type: "varchar",
           },
           {
-            name: "is_admin",
-            type: "boolean",
-            default: false,
-          },
-          {
-            name: "permissions",
+            name: "type",
             type: "varchar",
-            isArray: true,
-            isNullable: true,
-          },
-          {
-            name: "roles",
-            type: "varchar",
-            isArray: true,
-            isNullable: true,
           },
           {
             name: "created_at",

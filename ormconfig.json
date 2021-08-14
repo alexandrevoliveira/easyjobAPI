@@ -2,9 +2,9 @@
   "type": "postgres",
   "port": 5432,
   "host": "localhost",
-  "username": "engeman",
-  "password": "engemandb",
-  "database": "engemanapi",
+  "username": "easyjob",
+  "password": "easyjobdb",
+  "database": "easyjobapi",
   "migrations": ["./src/database/migrations/*.ts"],
   "entities": ["./src/modules/**/entities/*.ts"],
   "cli": {
