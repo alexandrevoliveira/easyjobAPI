@@ -1,4 +1,5 @@
 import "reflect-metadata";
+import "cors";
 import express, { NextFunction, Request, Response } from "express";
 import "express-async-errors";
 
@@ -11,6 +12,24 @@ import { AppError } from "@shared/errors/AppError";
 import { router } from "./routes";
 
 const app = express();
+
+// using this function to deal with cors policy
+const allowCrossDomain = (
+  request: Request,
+  response: Response,
+  next: NextFunction
+) => {
+  response.header("Access-Control-Allow-Origin", "*");
+  response.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  response.header("Access-Control-Allow-Headers", [
+    "Content-Type",
+    "Authorization",
+  ]);
+  response.header("Access-Control-Expose-Headers", "x-total-count"); // custom header required from the front-end application
+  next();
+};
+
+app.use(allowCrossDomain);
 
 app.use(express.json());
 
