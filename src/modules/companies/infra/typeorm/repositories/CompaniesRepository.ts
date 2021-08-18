@@ -27,6 +27,13 @@ class CompaniesRepository implements ICompaniesRepository {
     return company;
   }
 
+  async findByEmailOrCnpj(email: string, cnpj: string): Promise<Company> {
+    const company = await this.repository.findOne({
+      where: [{ email }, { cnpj }],
+    });
+    return company;
+  }
+
   async list(): Promise<Company[]> {
     const companies = this.repository.find();
     return companies;

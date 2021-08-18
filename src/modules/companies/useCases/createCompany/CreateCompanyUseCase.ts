@@ -19,9 +19,8 @@ class CreateCompanyUseCase {
     password,
     cnpj,
   }: ICreateCompanyDTO): Promise<void> {
-    const companyAlreadyExists = await this.companiesRepository.findByEmail(
-      email
-    );
+    const companyAlreadyExists =
+      await this.companiesRepository.findByEmailOrCnpj(email, cnpj);
 
     if (companyAlreadyExists) {
       throw new AppError("Company already exists!");
