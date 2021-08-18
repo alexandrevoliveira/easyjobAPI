@@ -1,9 +1,8 @@
+import { CompaniesRepository } from "@modules/companies/infra/typeorm/repositories/CompaniesRepository";
+import { ICompaniesRepository } from "@modules/companies/repositories/ICompaniesRepository";
 import { container } from "tsyringe";
 
-import { UsersRepository } from "../../modules/accounts/repositories/implementations/UsersRepository";
-import { IUsersRepository } from "../../modules/accounts/repositories/IUsersRepository";
-
-container.registerSingleton<IUsersRepository>(
-  "UsersRepository",
-  UsersRepository
+container.registerSingleton<ICompaniesRepository>(
+  "CompaniesRepository",
+  CompaniesRepository
 );

@@ -7,8 +7,8 @@ import {
 } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
-@Entity("users")
-class User {
+@Entity("companies")
+class Company {
   @PrimaryColumn()
   id?: string;
 
@@ -22,7 +22,7 @@ class User {
   password: string;
 
   @Column()
-  type: string;
+  cnpj: string;
 
   @CreateDateColumn()
   created_at: Date;
@@ -37,4 +37,4 @@ class User {
   }
 }
 
-export { User };
+export { Company };
