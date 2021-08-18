@@ -1,4 +1,5 @@
 import { ICreateCompanyDTO } from "@modules/companies/dtos/ICreateCompanyDTO";
+import { hash } from "bcrypt";
 import { inject, injectable } from "tsyringe";
 
 import { AppError } from "@shared/errors/AppError";
@@ -26,7 +27,14 @@ class CreateCompanyUseCase {
       throw new AppError("Company already exists!");
     }
 
-    await this.companiesRepository.create({ name, email, password, cnpj });
+    const passwordHash = await hash(password, 8);
+
+    await this.companiesRepository.create({
+      name,
+      email,
+      password: passwordHash,
+      cnpj,
+    });
   }
 }
 
