@@ -50,12 +50,12 @@ class ListCompaniesUseCase {
       return companyFormatted;
     });
 
-    const listCompaniseUseCaseResponse: IResponse = {
+    const listCompaniesUseCaseResponse: IResponse = {
       companies: companiesFormatted,
       total,
     };
 
-    return listCompaniseUseCaseResponse;
+    return listCompaniesUseCaseResponse;
   }
 }
 
