@@ -52,12 +52,12 @@ class ListCandidatesUseCase {
       return candidateFormatted;
     });
 
-    const listCompaniseUseCaseResponse: IResponse = {
+    const listCandidatesUseCaseResponse: IResponse = {
       candidates: candidatesFormatted,
       total,
     };
 
-    return listCompaniseUseCaseResponse;
+    return listCandidatesUseCaseResponse;
   }
 }
 
