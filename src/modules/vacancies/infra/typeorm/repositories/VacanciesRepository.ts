@@ -39,6 +39,10 @@ class VacanciesRepository implements IVacanciesRepository {
     const vacancy = await this.repository.findOne({ role });
     return vacancy;
   }
+
+  async list(): Promise<Vacancy[]> {
+    return this.repository.find();
+  }
 }
 
 export { VacanciesRepository };
