@@ -38,6 +38,10 @@ class CompaniesRepository implements ICompaniesRepository {
     const companies = this.repository.find();
     return companies;
   }
+
+  async findById(id: string): Promise<Company> {
+    return this.repository.findOne(id);
+  }
 }
 
 export { CompaniesRepository };
