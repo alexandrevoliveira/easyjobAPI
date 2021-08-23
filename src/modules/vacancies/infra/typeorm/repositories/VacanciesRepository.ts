@@ -43,6 +43,10 @@ class VacanciesRepository implements IVacanciesRepository {
   async list(): Promise<Vacancy[]> {
     return this.repository.find();
   }
+
+  async findById(id: string): Promise<Vacancy> {
+    return this.repository.findOne(id);
+  }
 }
 
 export { VacanciesRepository };

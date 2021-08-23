@@ -16,10 +16,6 @@ type Company = {
   updated_at: Date;
 };
 
-interface IResponse {
-  company: Company;
-}
-
 @injectable()
 class ShowCompanyUseCase {
   constructor(
