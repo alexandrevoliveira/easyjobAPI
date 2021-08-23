@@ -9,9 +9,9 @@ class ShowCandidateController {
 
     const showCandidateUseCase = container.resolve(ShowCandidateUseCase);
 
-    const company = await showCandidateUseCase.execute({ id });
+    const candidate = await showCandidateUseCase.execute({ id });
 
-    return response.status(200).json(company);
+    return response.status(200).json(candidate);
   }
 }
 
