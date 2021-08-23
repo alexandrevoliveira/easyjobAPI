@@ -38,6 +38,10 @@ class CandidatesRepository implements ICandidatesRepository {
     const candidates = this.repository.find();
     return candidates;
   }
+
+  async findById(id: string): Promise<Candidate> {
+    return this.repository.findOne(id);
+  }
 }
 
 export { CandidatesRepository };
