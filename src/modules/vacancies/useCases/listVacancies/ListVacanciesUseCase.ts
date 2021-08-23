@@ -8,6 +8,7 @@ interface IRequest {
 }
 
 type Vacancy = {
+  id: string;
   role: string;
   type: string;
   area: string;
@@ -15,6 +16,8 @@ type Vacancy = {
   salary: number;
   quantity: number;
   company_id: string;
+  created_at: Date;
+  updated_at: Date;
 };
 
 interface IResponse {
