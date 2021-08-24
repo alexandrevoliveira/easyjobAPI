@@ -1,4 +1,5 @@
 import { ICreateCandidateDTO } from "@modules/candidates/dtos/ICreateCandidateDTO";
+import { Candidate } from "@modules/candidates/infra/typeorm/entities/Candidate";
 import { hash } from "bcrypt";
 import { inject, injectable } from "tsyringe";
 
@@ -18,7 +19,7 @@ class CreateCandidateUseCase {
     email,
     password,
     cpf,
-  }: ICreateCandidateDTO): Promise<void> {
+  }: ICreateCandidateDTO): Promise<Candidate> {
     const candidateAlreadyExists =
       await this.candidatesRepository.findByEmailOrCpf(email, cpf);
 
@@ -28,12 +29,14 @@ class CreateCandidateUseCase {
 
     const passwordHash = await hash(password, 8);
 
-    await this.candidatesRepository.create({
+    const candidate = await this.candidatesRepository.create({
       name,
       email,
       password: passwordHash,
       cpf,
     });
+
+    return candidate;
   }
 }
 
