@@ -9,9 +9,14 @@ class CreateCandidateController {
 
     const createCandidateUseCase = container.resolve(CreateCandidateUseCase);
 
-    await createCandidateUseCase.execute({ name, email, password, cpf });
+    const candidate = await createCandidateUseCase.execute({
+      name,
+      email,
+      password,
+      cpf,
+    });
 
-    return response.status(201).send();
+    return response.status(201).json(candidate);
   }
 }
 

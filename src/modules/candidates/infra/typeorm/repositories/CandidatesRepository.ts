@@ -16,10 +16,12 @@ class CandidatesRepository implements ICandidatesRepository {
     email,
     password,
     cpf,
-  }: ICreateCandidateDTO): Promise<void> {
+  }: ICreateCandidateDTO): Promise<Candidate> {
     const candidate = this.repository.create({ name, email, password, cpf });
 
     await this.repository.save(candidate);
+
+    return candidate;
   }
 
   async findByEmail(email: string): Promise<Candidate> {

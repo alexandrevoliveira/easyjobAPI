@@ -11,12 +11,14 @@ class CandidatesRepositoryInMemory implements ICandidatesRepository {
     email,
     password,
     cpf,
-  }: ICreateCandidateDTO): Promise<void> {
+  }: ICreateCandidateDTO): Promise<Candidate> {
     const candidate = new Candidate();
 
     Object.assign(candidate, { name, email, password, cpf });
 
     this.candidates.push(candidate);
+
+    return candidate;
   }
 
   async findByEmail(email: string): Promise<Candidate> {
