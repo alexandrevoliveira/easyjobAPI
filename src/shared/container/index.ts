@@ -1,3 +1,5 @@
+import { ApplicationsRepository } from "@modules/applications/infra/typeorm/repositories/ApplicationsRepository";
+import { IApplicationsRepository } from "@modules/applications/repositories/IApplicationsRepository";
 import { CandidatesRepository } from "@modules/candidates/infra/typeorm/repositories/CandidatesRepository";
 import { ICandidatesRepository } from "@modules/candidates/repositories/ICandidatesRepository";
 import { CompaniesRepository } from "@modules/companies/infra/typeorm/repositories/CompaniesRepository";
@@ -19,4 +21,9 @@ container.registerSingleton<ICandidatesRepository>(
 container.registerSingleton<IVacanciesRepository>(
   "VacanciesRepository",
   VacanciesRepository
+);
+
+container.registerSingleton<IApplicationsRepository>(
+  "ApplicationsRepository",
+  ApplicationsRepository
 );
