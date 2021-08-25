@@ -7,6 +7,7 @@ interface IApplicationsRepository {
     candidate_id: string,
     vacancy_id: string
   ): Promise<Application>;
+  list(): Promise<Application[]>;
 }
 
 export { IApplicationsRepository };

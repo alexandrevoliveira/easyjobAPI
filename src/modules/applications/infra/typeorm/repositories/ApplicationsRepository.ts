@@ -32,6 +32,10 @@ class ApplicationsRepository implements IApplicationsRepository {
 
     return application;
   }
+
+  list(): Promise<Application[]> {
+    return this.repository.find();
+  }
 }
 
 export { ApplicationsRepository };
