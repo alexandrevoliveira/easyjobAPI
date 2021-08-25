@@ -16,10 +16,12 @@ class CompaniesRepository implements ICompaniesRepository {
     email,
     password,
     cnpj,
-  }: ICreateCompanyDTO): Promise<void> {
+  }: ICreateCompanyDTO): Promise<Company> {
     const company = this.repository.create({ name, email, password, cnpj });
 
     await this.repository.save(company);
+
+    return company;
   }
 
   async findByEmail(email: string): Promise<Company> {
