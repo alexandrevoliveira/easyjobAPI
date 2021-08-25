@@ -11,12 +11,14 @@ class CompaniesRepositoryInMemory implements ICompaniesRepository {
     email,
     password,
     cnpj,
-  }: ICreateCompanyDTO): Promise<void> {
+  }: ICreateCompanyDTO): Promise<Company> {
     const company = new Company();
 
     Object.assign(company, { name, email, password, cnpj });
 
     this.companies.push(company);
+
+    return company;
   }
 
   async findByEmail(email: string): Promise<Company> {

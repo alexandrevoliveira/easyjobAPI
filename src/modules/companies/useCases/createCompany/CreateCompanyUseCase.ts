@@ -1,4 +1,5 @@
 import { ICreateCompanyDTO } from "@modules/companies/dtos/ICreateCompanyDTO";
+import { Company } from "@modules/companies/infra/typeorm/entities/Company";
 import { hash } from "bcrypt";
 import { inject, injectable } from "tsyringe";
 
@@ -18,7 +19,7 @@ class CreateCompanyUseCase {
     email,
     password,
     cnpj,
-  }: ICreateCompanyDTO): Promise<void> {
+  }: ICreateCompanyDTO): Promise<Company> {
     const companyAlreadyExists =
       await this.companiesRepository.findByEmailOrCnpj(email, cnpj);
 
@@ -28,12 +29,14 @@ class CreateCompanyUseCase {
 
     const passwordHash = await hash(password, 8);
 
-    await this.companiesRepository.create({
+    const company = await this.companiesRepository.create({
       name,
       email,
       password: passwordHash,
       cnpj,
     });
+
+    return company;
   }
 }
 
